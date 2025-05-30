@@ -1,9 +1,17 @@
-package com.tcs.assessment.Model.dto;
+package com.tcs.assessment.model.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.time.LocalDate;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Setter
 public class CustomerRequest {
     @NotBlank
     private String name;

@@ -1,16 +1,26 @@
-package com.tcs.assessment.Model;
+package com.tcs.assessment.model;
 
 
 import jakarta.persistence.*;
+
+
 import java.time.LocalDate;
 import java.util.UUID;
 
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
 @Table(name = "customers")
+@Getter
+@Setter
 public class Customer {
 
     @Id
-    @Column(nullable = false, updatable = false)
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(name = "id", updatable = false, nullable = false, columnDefinition = "VARCHAR(36)")
     private UUID id;
 
     @Column(nullable = false)
@@ -25,52 +35,27 @@ public class Customer {
 
     public Customer() {}
 
+
+
+
     public Customer(String name, String email, Double annualSpend, LocalDate lastPurchaseDate) {
+        // assignId();
         this.name = name;
         this.email = email;
         this.annualSpend = annualSpend;
         this.lastPurchaseDate = lastPurchaseDate;
     }
 
-    @PrePersist
     public void assignId() {
         if (this.id == null) {
             this.id = UUID.randomUUID();
         }
     }
 
-    public void setName(String name) {
-    }
 
-    public void setEmail(String email) {
-    }
 
-    public void setAnnualSpend(Double annualSpend) {
-    }
 
-    public void setLastPurchaseDate(LocalDate lastPurchaseDate) {
-    }
 
-    public double getAnnualSpend() {
-
-        return annualSpend != null ? annualSpend : 0.0;
-    }
-
-    public LocalDate getLastPurchaseDate() {
-        return lastPurchaseDate;
-    }
-
-    public Object getId() {
-        return id;
-    }
-
-    public Object getName() {
-        return name;
-    }
-
-    public Object getEmail() {
-        return email;
-    }
 
 
     // getters and setters omitted for brevity

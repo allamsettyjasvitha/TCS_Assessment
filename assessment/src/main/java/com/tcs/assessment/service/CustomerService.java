@@ -1,8 +1,7 @@
-package com.tcs.assessment.Service;
+package com.tcs.assessment.service;
 
-import com.tcs.assessment.Model.dto.CustomerRequest;
-import com.tcs.assessment.Model.dto.CustomerResponse;
-import jakarta.validation.Valid;
+import com.tcs.assessment.model.dto.CustomerRequest;
+import com.tcs.assessment.model.dto.CustomerResponse;
 
 import java.util.UUID;
 

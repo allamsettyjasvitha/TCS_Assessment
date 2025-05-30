@@ -1,4 +1,4 @@
-package com.tcs.assessment.Exception;
+package com.tcs.assessment.exception;
 
 public class CustomerNotFoundException extends RuntimeException {
     public CustomerNotFoundException(String message) {

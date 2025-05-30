@@ -1,10 +1,10 @@
-package com.tcs.assessment.Service.Implementation;
-import com.tcs.assessment.Service.CustomerService;
-import com.tcs.assessment.Model.dto.CustomerRequest;
-import com.tcs.assessment.Model.dto.CustomerResponse;
-import com.tcs.assessment.Exception.CustomerNotFoundException;
-import com.tcs.assessment.Model.Customer;
-import com.tcs.assessment.Repository.CustomerRepository;
+package com.tcs.assessment.service.Implementation;
+import com.tcs.assessment.service.CustomerService;
+import com.tcs.assessment.model.dto.CustomerRequest;
+import com.tcs.assessment.model.dto.CustomerResponse;
+import com.tcs.assessment.exception.CustomerNotFoundException;
+import com.tcs.assessment.model.Customer;
+import com.tcs.assessment.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDate;
@@ -13,7 +13,7 @@ import java.util.Objects;
 import java.util.UUID;
 
 @Service
-@Transactional
+
 public class CustomerServiceImpl implements CustomerService {
 
     private final CustomerRepository repo;
@@ -28,7 +28,8 @@ public class CustomerServiceImpl implements CustomerService {
                 req.getEmail(),
                 req.getAnnualSpend(),
                 req.getLastPurchaseDate());
-        return toResponse(repo.save(c));
+        Customer saved = repo.save(c);
+        return toResponse(saved);
     }
 
 
@@ -75,14 +76,8 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     private CustomerResponse toResponse(Customer c) {
-        CustomerResponse r = new CustomerResponse();
-        r.setId(c.getId());
-        r.setName(c.getName());
-        r.setEmail(c.getEmail());
-        r.setAnnualSpend(c.getAnnualSpend());
-        r.setLastPurchaseDate(c.getLastPurchaseDate());
-        r.setTier(calculateTier(c));
-        return r;
+
+        return CustomerResponse.builder().id(c.getId()).name(c.getName()).annualSpend(c.getAnnualSpend()).email(c.getEmail()).build();
     }
 
     private String calculateTier(Customer c) {
