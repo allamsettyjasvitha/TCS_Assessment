@@ -61,23 +61,23 @@ http://localhost:8080/h2-console
 
 JDBC URL: jdbc:h2:mem:testdb
 
-Username: sa
-Password: (leave blank)
+- Username: sa
+- Password: (leave blank)
 
 ## API Endpoints
 
 Method	Endpoint	Description
-POST	/customers	Create a new customer
-GET	/customers/{id}	Get customer by ID
-GET	/customers?name=	Get customer by name
-GET	/customers?email=	Get customer by email
-PUT	/customers/{id}	Update existing customer
-DELETE	/customers/{id}	Delete a customer
+- POST	/customers	Create a new customer
+- GET	/customers/{id}	Get customer by ID
+- GET	/customers?name=	Get customer by name
+- GET	/customers?email=	Get customer by email
+- PUT	/customers/{id}	Update existing customer
+- DELETE	/customers/{id}	Delete a customer
 
 ## Membership Tier Rules
-Silver: annualSpend < 1000
-Gold: 1000 ≤ annualSpend < 10000 and purchase within last 12 months
-Platinum: annualSpend ≥ 10000 and purchase within last 6 months
+- Silver: annualSpend < 1000
+- Gold: 1000 ≤ annualSpend < 10000 and purchase within last 12 months
+- Platinum: annualSpend ≥ 10000 and purchase within last 6 months
 Note: Tier is calculated at runtime and is not stored in the database.
 
 ## Unit Testing
@@ -92,7 +92,7 @@ Tier calculation logic
 Email validation
 
 ## Assumptions
-The id field is auto-generated and not provided during customer creation.
-Only name and email are mandatory fields.
-lastPurchaseDate is in ISO 8601 format.
-Tier is computed dynamically and returned only in GET responses.
+- The id field is auto-generated and not provided during customer creation.
+- Only name and email are mandatory fields.
+- lastPurchaseDate is in ISO 8601 format.
+- Tier is computed dynamically and returned only in GET responses.
